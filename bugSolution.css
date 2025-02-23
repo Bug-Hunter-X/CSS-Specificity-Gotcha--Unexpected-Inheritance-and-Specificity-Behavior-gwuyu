@@ -1,0 +1,43 @@
+To solve this issue, we need to increase the specificity of the rule targeting paragraphs within divs. Here are a few ways:
+
+1. **Increase Specificity with Class:** Add a class to the `div` and target that class in the selector:
+
+```css
+div {
+  color: blue;
+}
+
+p {
+  color: red;
+}
+
+.container p {
+  color: green; /* Now this rule will override the `p` selector */
+}
+```
+
+2. **More Specific Selector:** Use a more specific selector like `div > p` to target only direct children of the `div`:
+
+```css
+div {
+  color: blue;
+}
+
+p {
+  color: red;
+}
+
+div > p {
+  color: green; /*This also increases the specificity*/
+}
+```
+
+3. **Use !important (Least Recommended):** Although generally discouraged, the `!important` flag can override other rules.
+
+```css
+div p {
+  color: green !important; /* This will override other rules, but avoid unless necessary */
+}
+```
+
+Choosing the right solution depends on the context of your CSS, but understanding inheritance and specificity is crucial for predictable results.
