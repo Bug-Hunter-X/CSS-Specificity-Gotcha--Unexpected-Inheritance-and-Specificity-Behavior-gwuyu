@@ -1,0 +1,19 @@
+The following CSS code snippet demonstrates an uncommon error related to specificity and inheritance:
+
+```css
+div {
+  color: blue;
+}
+
+p {
+  color: red;
+}
+
+div p {
+  color: green; /* This rule will likely not work as expected */
+}
+```
+
+The intended behavior is that paragraphs (`<p>`) inside a `div` element should have green text. However, due to CSS specificity rules, the `div p` selector might not override the `p` selector.  This is because the `p` selector is more specific than `div p` when both apply.
+
+The `p` selector has a specificity of 0,1,0 while the `div p` has a specificity of 0,1,1. But because the `p` selector is inherited from the universal selector and also has a higher specificity, the rule might not apply unless we add another class in the `div` element.  This is a subtle point that many developers miss.
